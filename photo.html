@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>照片漂流瓶</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f4f4f4;
+      overflow: hidden;
+    }
+    .photo-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+    .photo-container img {
+      position: absolute;
+      max-width: 200px;
+      height: auto;
+      object-fit: contain;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
+    }
+    .photo-container img:hover {
+      transform: scale(1.05) rotate(0deg);
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="photo-container" id="container"></div>
+
+  <script>
+   const imageList = [];
+for (let i = 1; i <= 14; i++) {
+  imageList.push(`pic${i}.jpg`);
+}
+
+    const container = document.getElementById("container");
+
+    imageList.forEach(imgName => {
+      const img = document.createElement("img");
+      img.src = `images/${imgName}`;
+      img.style.top = Math.random() * 80 + "vh";
+      img.style.left = Math.random() * 80 + "vw";
+      img.style.transform = `rotate(${Math.random() * 30 - 15}deg)`;
+      container.appendChild(img);
+    });
+  </script>
+</body>
+</html>

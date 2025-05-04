@@ -1,0 +1,85 @@
+/* 全局基础样式：清除默认边距、设定字体、背景和文字颜色 */
+body {
+    margin: 0;
+    font-family: "Noto Sans SC", sans-serif;
+    background-color: #fffaf9;
+    color: #444;
+}
+
+/* 页面整体包裹容器，设置为垂直布局，并占满整个视口高度 */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+  
+/* 左侧边栏样式：固定宽度，高度填满，背景色柔和，带阴影 */
+.sidebar {
+    width: 220px;
+    background-color: #f7f2f0;
+    height: 100vh;
+    padding: 30px 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+}
+  
+/* 侧边栏标题样式 */
+.sidebar h3 {
+    margin-top: 0;
+    color: #8b5e3c;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+/* 侧边栏链接样式：悬停时变色并出现左边框 */
+.sidebar a {
+    display: block;
+    margin: 12px 0;
+    text-decoration: none;
+    color: #5c4033;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+    padding-left: 10px;
+}
+  
+.sidebar a:hover {
+    color: #d2691e;
+    border-left: 3px solid #d2691e;
+    background-color: #f0e6e3;
+}
+  
+/* 主内容区样式：使用 flex 充满剩余空间，并添加内边距 */
+.main {
+    flex: 1;
+    padding: 60px;
+}
+
+/* 页面主区域容器：横向排列 sidebar 和 main */
+.container {
+    flex: 1;
+    display: flex;
+}
+  
+/* 主标题样式 */
+.main h1 {
+    font-size: 36px;
+    color: #774936;
+    margin-bottom: 20px;
+}
+  
+/* 正文段落样式 */
+.main p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* 大型云朵装饰：透明不可交互，绝对定位在右上方 */
+.big-cloud {
+    font-size: 400px;
+    opacity: 0.15;
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    pointer-events: none;
+    user-select: none;
+}
