@@ -43,13 +43,40 @@
 </head>
 <body>
   <h1>留言板</h1>
-  <script src="https://utteranc.es/client.js"
-  repo="psuonci/mywebsite"
-  issue-term="pathname"
-  label="guestbook"
-  theme="github-light"
-  crossorigin="anonymous"
-  async>
-  </script>
+  <select id="modeSelector" onchange="toggleMode()" style="margin-bottom: 20px;">
+    <option value="form">✉️ 匿名留言（发送邮件）</option>
+    <option value="github">👤 GitHub 留言（需登录）</option>
+  </select>
+
+  <!-- 匿名留言表单 -->
+  <div id="formMode">
+    <form action="https://formspree.io/f/mzzrrdpy" method="POST">
+      <label for="message">留言：</label>
+      <textarea name="message" id="message" required></textarea>
+      <input type="hidden" name="_subject" value="新留言！">
+      <input type="hidden" name="_language" value="zh">
+      <button type="submit">发送留言</button>
+    </form>
+    <p>留言将通过邮件发送给我 ^ ^</p>
+  </div>
+
+  <!-- GitHub Issues 留言 -->
+  <div id="githubMode" style="display: none;">
+    <script src="https://utteranc.es/client.js"
+      repo="psuonci/mywebsite"
+      issue-term="pathname"
+      label="留言"
+      theme="github-light"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </div>
 </body>
+<script>
+  function toggleMode() {
+    const mode = document.getElementById('modeSelector').value;
+    document.getElementById('formMode').style.display = (mode === 'form') ? 'block' : 'none';
+    document.getElementById('githubMode').style.display = (mode === 'github') ? 'block' : 'none';
+  }
+</script>
 </html>
