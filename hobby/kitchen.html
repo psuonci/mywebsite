@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>厨房实录</title>
+  <style>
+    body {
+      background-color: #fffaf9;
+      color: #444;
+      font-family: sans-serif;
+      padding: 20px;
+      margin: 0;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-start;
+    }
+    .images img {
+      width: auto;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .caption {
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <h1>厨房实录</h1>
+
+  <div class="section">
+    <div class="images" id="kitchen-images"></div>
+    <div class="caption" id="kitchen-caption"></div>
+  </div>
+<script src="kitchen-captions.js"></script>
+<script>
+  const imageCount = 20; // adjust as needed
+  const imageContainer = document.getElementById("kitchen-images");
+  const captionContainer = document.getElementById("kitchen-caption");
+
+  for (let i = 1; i <= imageCount; i++) {
+    const img = new Image();
+    img.onload = function () {
+      img.alt = `厨房图片${i}`;
+      img.className = 'coffee-img';
+      imageContainer.appendChild(img);
+      if (captions[i]) {
+        const p = document.createElement("p");
+        p.textContent = captions[i];
+        captionContainer.appendChild(p);
+      }
+    };
+    img.onerror = function () {};
+    img.src = `../images/kitchen/kitchen${i}.jpg`;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!-- 咖啡记录页面：棕色调曲线排版 -->
+<div class="coffee-gallery">
+  <h1 class="coffee-title">练习记录</h1>
+  <div class="coffee-flow">
+  </div>
+</div>
+
+<style>
+  body {
+    background-color: #fefaf3;
+    font-family: 'Georgia', serif;
+    color: #4b2e2e;
+    margin: 0;
+    padding: 2em;
+  }
+
+  .coffee-title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #a1866f;
+    display: inline-block;
+    padding-bottom: 0.2em;
+  }
+
+  .coffee-flow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+    padding: 2em 0;
+  }
+
+  .coffee-img {
+    width: 160px;
+    border-radius: 6px;
+    border: 1px solid #dbc6b0;
+    box-shadow: 2px 2px 5px rgba(150, 130, 110, 0.1);
+    transform: rotate(var(--angle, 0deg));
+    transition: transform 0.3s;
+  }
+
+  .coffee-img:nth-child(odd) {
+    transform: rotate(-4deg);
+  }
+
+  .coffee-img:nth-child(even) {
+    transform: rotate(3deg);
+  }
+
+  .coffee-img:hover {
+    transform: scale(1.05) rotate(0deg);
+  }
+</style>
+<script>
+  // 自动加载 images/coffee 文件夹下的图片（假设为 coffee1.jpg 至 coffee20.jpg）
+  const container = document.querySelector('.coffee-flow');
+  for (let i = 1; i <= 20; i++) {
+    const img = new Image();
+    img.onload = function () {
+      img.className = 'coffee-img';
+      container.appendChild(img);
+    };
+    img.onerror = function () {
+      // 图片不存在，不加载
+    };
+    img.src = `../images/coffee/coffee${i}.jpg`;
+    img.alt = `Coffee ${i}`;
+  }
+</script>
