@@ -51,6 +51,35 @@
     <a href="book3.html">《油炸绿番茄》</a>
   </div>
   <div class="main">
+    <div id="blog-posts"></div>
+    <script>
+      // 模拟从 JSON 文件加载内容
+      const blogContent = [
+        {
+          "title": "五一假期在看《宝宝刺客》！",
+          "caption": "超级萌超极好玩，无法不喜欢的杀手题材",
+          "content": "这里不知道写什么",
+          "date": "2025年5月5日"
+        },
+      ];
+
+      // 按日期排序
+      blogContent.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      // 渲染到页面
+      const blogContainer = document.getElementById("blog-posts");
+      blogContent.forEach(post => {
+        const postElement = document.createElement("div");
+        postElement.classList.add("item");
+        postElement.innerHTML = `
+          <h2>${post.title}</h2>
+          <p class="caption">${post.caption}</p>
+          <p>${post.content}</p>
+          <p class="date">${post.date}</p>
+        `;
+        blogContainer.appendChild(postElement);
+      });
+    </script>
   </div>
 </body>
 </html>
